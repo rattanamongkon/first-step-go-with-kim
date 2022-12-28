@@ -40,3 +40,27 @@ func (s *mainService) CreateUser(ctx *gin.Context) {
 		"msg":    "success",
 	})
 }
+
+func (s *mainService) ShowUser(ctx *gin.Context) {
+	db := connection.GetConnectionDB()
+	_ = db
+
+	temp := model.User{
+		ID: 1,
+	}
+
+	if err := db.Model(&temp).WherePK().First(); err != nil {
+		log.Println(err.Error())
+		ctx.JSON(500, gin.H{
+			"status": false,
+			"msg":    err.Error(),
+		})
+		return
+	}
+
+	ctx.JSON(200, gin.H{
+		"status": true,
+		"msg":    "success",
+		"data":   temp,
+	})
+}

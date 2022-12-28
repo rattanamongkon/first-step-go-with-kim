@@ -20,6 +20,7 @@ func main() {
 	// Route API
 	api := route.Group(`/api`)
 	api.POST(`/user/create`, handler.CreateUser)
+	api.GET(`/user`, handler.ShowUser)
 
 	//Run Gin
 	route.Run()
