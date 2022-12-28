@@ -1,0 +1,20 @@
+GET http://localhost:8080/books
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzE0MjI3MDl9.k66qiPgIobGwObzIL-P2e_NqLS-QNQpS_rITxMBH76M
+###
+
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+    "id": "2",
+    "title": "The Godfather",
+    "author": "Mario Puzo"
+}
+###
+
+DELETE http://localhost:8080/books/2
+###
+
+POST http://localhost:8080/login
+Content-Type: application/json
+###
