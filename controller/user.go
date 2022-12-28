@@ -14,7 +14,6 @@ func (s *mainService) CreateUser(ctx *gin.Context) {
 	_ = db
 
 	temp := model.User{
-		ID:        1,
 		Name:      `name`,
 		Email:     `ser`,
 		Username:  `wer`,
