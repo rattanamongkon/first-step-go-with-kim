@@ -1,12 +1,16 @@
 package main
 
 import (
+	"example/go-rest-api/conf"
 	"example/go-rest-api/controller"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	//init func
+	conf.Init()
+
 	// Register Service
 	handler := controller.RegisterController()
 
