@@ -24,6 +24,7 @@ func (s *mainService) CreateUser(ctx *gin.Context) {
 		FactoryId: 1,
 		PlantId:   1,
 		CreatedAt: time.Now().Unix(),
+		UpdatedAt: time.Now().Unix(),
 	}
 
 	if _, err := db.Model(&temp).Insert(); err != nil {

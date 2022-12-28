@@ -2,7 +2,7 @@ GET http://localhost:8080/books
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzE0MjI3MDl9.k66qiPgIobGwObzIL-P2e_NqLS-QNQpS_rITxMBH76M
 ###
 
-POST http://localhost:8080/api/member/create
+POST http://localhost:8080/api/user/create HTTP/1.1
 Content-Type: application/json
 
 {

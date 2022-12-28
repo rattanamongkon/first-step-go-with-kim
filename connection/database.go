@@ -8,9 +8,9 @@ func GetConnectionDB() *pg.DB {
 	if db == nil {
 		db = pg.Connect(&pg.Options{
 			Addr:     ":5432",
-			User:     "user",
-			Password: "pass",
-			Database: "db_name",
+			User:     "postgres",
+			Password: "",
+			Database: "mydatabase",
 		})
 	}
 	return db
