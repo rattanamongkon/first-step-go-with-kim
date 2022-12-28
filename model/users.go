@@ -8,6 +8,6 @@ type User struct {
 	Password  string `json:"password"`
 	IsActive  bool   `json:"is_active"`
 	Role      string `json:"role"`
-	FactoryId string `json:"factory_id"`
-	PlantId   string `json:"plant_id"`
+	FactoryId int64  `json:"factory_id"`
+	PlantId   int64  `json:"plant_id"`
 }
