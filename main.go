@@ -1,6 +1,7 @@
 package main
 
 import (
+	"example/go-rest-api/conf"
 	"fmt"
 	"net/http"
 	"strings"
@@ -16,6 +17,7 @@ var db *gorm.DB
 
 func main() {
 	var err error
+	t_db := conf.Dbconnection()
 	db, err = gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
 
 	if err != nil {
