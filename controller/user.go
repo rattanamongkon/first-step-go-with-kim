@@ -4,6 +4,7 @@ import (
 	"example/go-rest-api/connection"
 	"example/go-rest-api/model"
 	"log"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -22,6 +23,7 @@ func (s *mainService) CreateUser(ctx *gin.Context) {
 		Role:      `member`,
 		FactoryId: 1,
 		PlantId:   1,
+		CreatedAt: time.Now().Unix(),
 	}
 
 	if _, err := db.Model(&temp).Insert(); err != nil {

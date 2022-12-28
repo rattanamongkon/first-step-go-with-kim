@@ -1,7 +1,7 @@
 package model
 
 type User struct {
-	ID        int64  `json:"id"`
+	ID        int64  `pg:"pk" json:"id"`
 	Name      string `json:"name"`
 	Email     string `json:"email"`
 	Username  string `json:"username"`
@@ -10,4 +10,6 @@ type User struct {
 	Role      string `json:"role"`
 	FactoryId int64  `json:"factory_id"`
 	PlantId   int64  `json:"plant_id"`
+	CreatedAt int64  `json:"created_at"`
+	UpdatedAt int64  `json:"updated_at"`
 }
