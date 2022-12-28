@@ -1,8 +1,6 @@
 package connection
 
 import (
-	"log"
-
 	"github.com/go-pg/pg/v10"
 	"github.com/spf13/viper"
 )
@@ -17,8 +15,6 @@ func GetConnectionDB() *pg.DB {
 			Password: viper.GetString(`DB_PASSWORD`),
 			Database: viper.GetString(`DB_DATABASE`),
 		})
-
-		log.Print(db.Options().Addr)
 	}
 	return db
 }

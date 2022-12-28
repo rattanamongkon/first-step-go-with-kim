@@ -8,12 +8,7 @@ import (
 )
 
 func Init() {
-
-	err := godotenv.Load(".env")
-	if err != nil {
-		panic(`Not Found .ENV`)
-	}
-
+	godotenv.Load(".env")
 	loadENV()
 }
 
@@ -23,7 +18,7 @@ func loadENV() {
 
 	// Database
 	envConf(`DB_HOST`, `127.0.0.1:5432`)
-	envConf(`DB_USERNAME`, `postgres`)
+	envConf(`DB_USERNAME`, `chaiwat`)
 	envConf(`DB_PASSWORD`, ``)
 	envConf(`DB_DATABASE`, `postgres`)
 }
