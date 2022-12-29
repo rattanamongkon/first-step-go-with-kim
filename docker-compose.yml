@@ -36,5 +36,5 @@ services:
 networks:
   datavi-database:
     name: datavi-database
-  datavi-service-api:
-    name: datavi-api-network
+  datavi-api-network:
+    name: datavi-service-api
