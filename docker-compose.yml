@@ -5,7 +5,7 @@ services:
     build: .
     image: cpf/datavi-api:0.0.1
     container_name: cpf-datavi-api
-    network_mode: "host"
+    # network_mode: "host"
     # command: "./stakeholder-api"
     restart: on-failure
     # expose:
