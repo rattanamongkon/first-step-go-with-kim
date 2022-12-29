@@ -1,22 +1,22 @@
 version: '3.7'
 
 services:
-  datavi-database:
-    image: postgres:latest
-    container_name: datavi_db
-    restart: on-failure
-#    expose:
-#      - "5432"
-    ports:
-      - "8632:5432"
-    environment:
-      POSTGRES_USER: "longkong"
-      POSTGRES_PASSWORD: "longkong"
-      POSTGRES_DATABASE: "datavi-service"
-    volumes:
-      - //root/adaptric-storage/postgres-card-data:/var/lib/postgresql/data
-    networks:
-      - datavi-database
+#   datavi-database:
+#     image: postgres:latest
+#     container_name: datavi_db
+#     restart: on-failure
+# #    expose:
+# #      - "5432"
+#     ports:
+#       - "8632:5432"
+#     environment:
+#       POSTGRES_USER: "longkong"
+#       POSTGRES_PASSWORD: "longkong"
+#       POSTGRES_DATABASE: "datavi-service"
+#     volumes:
+#       - //root/adaptric-storage/postgres-card-data:/var/lib/postgresql/data
+#     networks:
+#       - datavi-database
 
   datavi-service-api:
     build: .
@@ -34,7 +34,7 @@ services:
       - datavi-api-network
 
 networks:
-  datavi-database:
-    name: datavi-database
+  # datavi-database:
+  #   name: datavi-database
   datavi-service-api:
     name: datavi-api-network
