@@ -4,6 +4,14 @@ services:
   datavi-service-api:
     build: .
     image: cpf/datavi-api:0.0.1
+    environment:
+      - ENV_TYPE=${ENV_TYPE}
+      - DB_HOST=${DB_HOST}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+    env_file:
+      - /.env
     container_name: cpf-datavi-api
     # network_mode: "host"
     # command: "./stakeholder-api"
