@@ -18,9 +18,9 @@ func loadENV() {
 
 	// Database
 	envConf(`DB_HOST`, `127.0.0.1:5432`)
-	envConf(`DB_USERNAME`, `chaiwat`)
+	envConf(`DB_USERNAME`, `postgres`)
 	envConf(`DB_PASSWORD`, ``)
-	envConf(`DB_DATABASE`, `postgres`)
+	envConf(`DB_DATABASE`, `mydatabase`)
 }
 
 func envConf(key string, initValue any) {
