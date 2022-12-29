@@ -1,5 +1,7 @@
 package model
 
+import "github.com/go-pg/pg/v10"
+
 type Machine struct {
 	ID        int64  `json:"id"`
 	CountFg   int64  `json:"count_fg"`
@@ -11,4 +13,9 @@ type Machine struct {
 	SkuId     int64  `json:"sku_id"`
 	CreatedAt int64  `json:"created_at"`
 	UpdatedAt int64  `json:"updated_at"`
+}
+
+func (s *Machine) CreateMachine(db *pg.DB) error {
+	_, err := db.Model(s).Insert()
+	return err
 }
