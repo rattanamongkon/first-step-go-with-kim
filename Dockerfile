@@ -1,4 +1,12 @@
 FROM golang:alpine as builder
-RUN apk --no-cache add build-base tzdata ca-certificates
-# WORKDIR /home/ec2-user/backend
 WORKDIR /app
+
+COPY . .
+
+RUN go mod download
+
+RUN go build -o /docker-datavi-api
+
+# EXPOSE 8080
+
+# CMD [ "/docker-gs-ping" ]
