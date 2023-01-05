@@ -41,3 +41,17 @@ DELETE http://localhost:8080/books/2
 POST http://localhost:8080/login
 Content-Type: application/json
 ###
+
+# Factory
+GET  http://localhost:8080/api/factory HTTP/1.1
+Content-Type: application/json
+###
+
+POST http://localhost:8080/api/factory/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "test5",
+    "code": "t5",
+    "is_actives": false
+}

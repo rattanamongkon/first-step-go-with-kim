@@ -9,5 +9,6 @@ func GetModel() []interface{} {
 		(*model.Sku)(nil),
 		(*model.Plant)(nil),
 		(*model.Factory)(nil),
+		(*model.Machine)(nil),
 	}
 }

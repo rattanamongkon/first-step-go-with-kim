@@ -1,5 +1,7 @@
 package model
 
+import "github.com/go-pg/pg/v10"
+
 type Factory struct {
 	ID        int64  `json:"id"`
 	Name      string `json:"name"`
@@ -7,4 +9,9 @@ type Factory struct {
 	IsActive  bool   `json:"is_active"`
 	CreatedAt int64  `json:"created_at"`
 	UpdatedAt int64  `json:"updated_at"`
+}
+
+func (s *Factory) CreateFactory(db *pg.DB) error {
+	_, err := db.Model(s).Insert()
+	return err
 }
