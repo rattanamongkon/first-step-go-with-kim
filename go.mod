@@ -5,8 +5,10 @@ go 1.19
 require (
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-pg/pg/v10 v10.10.7
+	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/joho/godotenv v1.4.0
 	github.com/spf13/viper v1.14.0
+	golang.org/x/crypto v0.4.0
 )
 
 require (
@@ -39,7 +41,6 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.3.4 // indirect
 	github.com/vmihailenco/tagparser v0.1.2 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
-	golang.org/x/crypto v0.4.0 // indirect
 	golang.org/x/net v0.4.0 // indirect
 	golang.org/x/sys v0.3.0 // indirect
 	golang.org/x/text v0.5.0 // indirect

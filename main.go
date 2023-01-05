@@ -18,7 +18,9 @@ func main() {
 	route := gin.New()
 
 	// Route API
-	api := route.Group(`/api`)
+	route.POST(`/login`, handler.LoginUser)
+
+	api := route.Group(`/api`, handler.AuthorizationMiddleware)
 	// factory
 	api.GET(`/factory`, handler.ShowFactory)
 	api.POST(`/factory/create`, handler.CreateFactory)
