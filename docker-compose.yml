@@ -1,9 +1,9 @@
 version: '3.7'
 
 services:
-  datavi-service-api:
+  datavi-service-api: # Service name
     build: .
-    image: cpf/datavi-api:0.0.1
+    image: datavi-api:0.0.1
     environment:
       - ENV_TYPE=${ENV_TYPE}
       - DB_HOST=${DB_HOST}
@@ -13,8 +13,8 @@ services:
     env_file:
       - /.env
     container_name: cpf-datavi-api
-    # network_mode: "host"
-    # command: "./stakeholder-api"
+    network_mode: "host"
+    command: "go run ."
     restart: on-failure
     # expose:
     #  - "5000"
@@ -25,5 +25,5 @@ services:
       - datavi-api-network
 
 networks:
-  datavi-api-network:
+  network-datavi:
     name: datavi-api-network
