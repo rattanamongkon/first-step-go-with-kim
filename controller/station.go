@@ -39,7 +39,7 @@ func (s *mainService) CreateStation(ctx *gin.Context) {
 	station := model.Station{
 		Name:      req.Name,
 		Code:      req.Code,
-		IsActive:  req.IsActive,
+		IsActive:  &req.IsActive,
 		PlantId:   req.PlantId,
 		FactoryId: req.FactoryId,
 		CreatedAt: time.Now().Unix(),
@@ -75,6 +75,8 @@ func (s *mainService) ShowStation(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"status": true,
 		"msg":    "success",
-		"data":   station,
+		"data": gin.H{
+			"stations": station,
+		},
 	})
 }

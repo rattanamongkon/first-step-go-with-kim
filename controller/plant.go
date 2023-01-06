@@ -39,7 +39,7 @@ func (s *mainService) CreatePlant(ctx *gin.Context) {
 	plant := model.Plant{
 		Name:      req.Name,
 		Code:      req.Code,
-		IsActive:  req.IsActive,
+		IsActive:  &req.IsActive,
 		FactoryId: req.FactoryId,
 		CreatedAt: time.Now().Unix(),
 		UpdatedAt: time.Now().Unix(),
@@ -62,7 +62,6 @@ func (s *mainService) ShowPlant(ctx *gin.Context) {
 	_ = db
 
 	var plants []model.Plant
-
 	if err := db.Model(&plants).Select(); err != nil {
 		log.Println(err.Error())
 		ctx.JSON(http.StatusInternalServerError, gin.H{
@@ -71,9 +70,12 @@ func (s *mainService) ShowPlant(ctx *gin.Context) {
 		})
 		return
 	}
+
 	ctx.JSON(http.StatusOK, gin.H{
 		"status": true,
 		"msg":    "success",
-		"data":   plants,
+		"data": gin.H{
+			"plants": plants,
+		},
 	})
 }

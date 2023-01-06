@@ -39,7 +39,7 @@ func (s *mainService) CreateFactory(ctx *gin.Context) {
 	factory := model.Factory{
 		Name:      req.Name,
 		Code:      req.Code,
-		IsActive:  req.IsActive,
+		IsActive:  &req.IsActive,
 		CreatedAt: time.Now().Unix(),
 		UpdatedAt: time.Now().Unix(),
 	}
@@ -75,6 +75,8 @@ func (s *mainService) ShowFactory(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"status": true,
 		"msg":    "success",
-		"data":   factories,
+		"data": gin.H{
+			"factories": factories,
+		},
 	})
 }

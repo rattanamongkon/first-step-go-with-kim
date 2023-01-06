@@ -3,6 +3,13 @@ package model
 import "github.com/go-pg/pg/v10"
 
 type Sku struct {
+	ID        int64  `pg:",pk"`
+	Name      string `pg:",notnull"`
+	Code      string `pg:",notnull,unique"`
+	CreatedAt int64
+	UpdatedAt int64
+}
+type SkuResponse struct {
 	ID        int64  `json:"id"`
 	Name      string `json:"name"`
 	Code      string `json:"code"`

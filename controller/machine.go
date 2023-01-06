@@ -29,36 +29,74 @@ func (s *mainService) CreateDataMachine(ctx *gin.Context) {
 	db := connection.GetConnectionDB()
 	_ = db
 
-	req := &CreateDataMachineReq{}
-	res := &CreateDataMachineRes{}
+	// req := &CreateDataMachineReq{}
+	// res := &CreateDataMachineRes{}
 
-	if err := ctx.ShouldBindJSON(req); err != nil {
+	var payload *model.MachineInput
+	log.Println(payload)
+	if err := ctx.ShouldBindJSON(&payload); err != nil {
 		log.Println(err.Error())
-		res.Msg = err.Error()
-		ctx.JSON(http.StatusBadRequest, res)
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"status": false,
+			"msg":    err.Error(),
+		})
 		return
 	}
-
 	machine := model.Machine{
-		CountFg:   req.CountFg,
-		CountNg:   req.CountNg,
-		TimeStamp: req.TimeStamp,
-		FactoryId: req.FactoryId,
-		PlantId:   req.PlantId,
-		StationId: req.StationId,
-		SkuId:     req.SkuId,
+		CountFg:   payload.CountFg,
+		CountNg:   payload.CountNg,
+		TimeStamp: payload.TimeStamp,
+		FactoryId: payload.FactoryId,
+		PlantId:   payload.PlantId,
+		StationId: payload.StationId,
+		SkuId:     payload.SkuId,
 		CreatedAt: time.Now().Unix(),
 		UpdatedAt: time.Now().Unix(),
 	}
 
-	if err := machine.CreateMachine(db); err != nil {
+	if _, err := db.Model(&machine).Insert(); err != nil {
 		log.Println(err.Error())
-		res.Msg = err.Error()
-		ctx.JSON(http.StatusBadRequest, res)
+		ctx.JSON(http.StatusConflict, gin.H{
+			"status": false,
+			"msg":    err.Error(),
+		})
 		return
 	}
 
-	res.Status = true
-	res.Msg = `success`
-	ctx.JSON(http.StatusBadRequest, res)
+	// if err := machine.CreateMachine(db); err != nil {
+	// 	log.Println(err.Error())
+	// 	res.Msg = err.Error()
+	// 	ctx.JSON(http.StatusBadRequest, res)
+	// 	return
+	// }
+
+	// res.Status = true
+	// res.Msg = `success`
+	// ctx.JSON(http.StatusBadRequest, res)
+	ctx.JSON(http.StatusCreated, gin.H{
+		"status": true,
+		"msg":    "success",
+	})
+}
+
+func (s *mainService) DataMachine(ctx *gin.Context) {
+	db := connection.GetConnectionDB()
+	_ = db
+	var machines []model.Machine
+
+	if err := db.Model(&machines).Order("id ASC").Limit(50).Select(); err != nil {
+		log.Println(err.Error())
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"status": false,
+			"msg":    err.Error(),
+		})
+		return
+	}
+	ctx.JSON(http.StatusOK, gin.H{
+		"status": true,
+		"msg":    "success",
+		"data": gin.H{
+			"machines": machines,
+		},
+	})
 }

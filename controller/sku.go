@@ -70,6 +70,8 @@ func (s *mainService) ShowSku(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"status": true,
 		"msg":    "success",
-		"data":   sku,
+		"data": gin.H{
+			"sku": sku,
+		},
 	})
 }

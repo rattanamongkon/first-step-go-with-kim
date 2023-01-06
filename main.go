@@ -19,22 +19,23 @@ func main() {
 
 	// Route API
 	route.POST(`/login`, handler.LoginUser)
+	route.GET(`/logout`, handler.LogoutUser)
 
-	api := route.Group(`/api`, handler.AuthorizationMiddleware)
+	api := route.Group(`/api`, handler.DeserializeUser)
 	// factory
 	api.GET(`/factory`, handler.ShowFactory)
 	api.POST(`/factory/create`, handler.CreateFactory)
 
 	// plant
-	api.POST(`/plant`, handler.ShowPlant)
+	api.GET(`/plant`, handler.ShowPlant)
 	api.POST(`/plant/create`, handler.CreatePlant)
 
 	// station
-	api.POST(`/station`, handler.ShowStation)
+	api.GET(`/station`, handler.ShowStation)
 	api.POST(`/station/create`, handler.CreateStation)
 
 	// sku
-	api.POST(`/sku`, handler.ShowSku)
+	api.GET(`/sku`, handler.ShowSku)
 	api.POST(`/sku/create`, handler.CreateSku)
 
 	// user
@@ -42,7 +43,8 @@ func main() {
 	api.POST(`/user/create`, handler.CreateUser)
 
 	// machine
-	api.POST(`/machine/create`, handler.CreateDataMachine)
+	route.POST(`/machine`, handler.CreateDataMachine)
+	api.GET(`/machine`, handler.DataMachine)
 
 	//Run Gin
 	route.Run()

@@ -1,8 +1,9 @@
 package connection
 
 import (
-	"github.com/go-pg/pg/v10"
 	"github.com/spf13/viper"
+
+	"github.com/go-pg/pg/v10"
 )
 
 var db *pg.DB

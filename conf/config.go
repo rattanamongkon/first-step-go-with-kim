@@ -8,7 +8,7 @@ import (
 )
 
 func Init() {
-	godotenv.Load(".env")
+	godotenv.Load("app.env")
 	loadENV()
 }
 
@@ -19,8 +19,13 @@ func loadENV() {
 	// Database
 	envConf(`DB_HOST`, `127.0.0.1:5432`)
 	envConf(`DB_USERNAME`, `postgres`)
-	envConf(`DB_PASSWORD`, ``)
-	envConf(`DB_DATABASE`, `mydatabase`)
+	envConf(`DB_PASSWORD`, `postgres`)
+	envConf(`DB_DATABASE`, `myTest-datavi`)
+	envConf(`CLIENT_ORIGIN`, `http://localhost:3000`)
+	envConf(`TOKEN_EXPIRED_IN`, `60m`)
+	envConf(`TOKEN_MAXAGE`, `60`)
+	envConf(`TOKEN_SECRET`, `mykey`)
+
 }
 
 func envConf(key string, initValue any) {

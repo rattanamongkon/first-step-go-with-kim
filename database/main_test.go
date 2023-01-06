@@ -3,6 +3,8 @@ package database
 import (
 	"example/go-rest-api/conf"
 	"example/go-rest-api/connection"
+	"example/go-rest-api/database/seeds"
+	"log"
 	"testing"
 
 	"github.com/go-pg/pg/v10"
@@ -18,7 +20,7 @@ func TestRefreshSchema(t *testing.T) {
 		args args
 	}{
 		{
-			name: `sdf`,
+			name: `CheckDatabase`,
 			args: args{
 				db: connection.GetConnectionDB(),
 			},
@@ -27,6 +29,9 @@ func TestRefreshSchema(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			RefreshSchema(tt.args.db)
+			log.Println("Seed User Data 'admin' user")
+			seed, _ := seeds.Seeds()
+			log.Println(seed)
 		})
 	}
 }
