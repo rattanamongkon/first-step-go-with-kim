@@ -1,7 +1,7 @@
 FROM golang:alpine as builder
 # Set the current working directory
 WORKDIR /app
-COPY go.mod go.sum /app/
+COPY go.mod go.sum ./
 RUN go mod download
 # Copy the source code
 COPY . /app

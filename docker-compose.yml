@@ -10,6 +10,12 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_DATABASE=${DB_DATABASE}
+      - DB_PORT=${DB_PORT}
+      - TOKEN_EXPIRED_IN=&{TOKEN_EXPIRED_IN}
+      - TOKEN_MAXAGE=&{TOKEN_MAXAGE}
+      - TOKEN_SECRET=&{TOKEN_SECRET}
+      - SALT_PASSWORD=&{SALT_PASSWORD}
+
     env_file:
       - /app.env
     container_name: cpf-datavi-api
@@ -23,8 +29,8 @@ services:
     ports:
       - "8109:5432"
     networks:
-      - datavi-api-network
+      - datavi-backend-network
 
 networks:
-  network-datavi:
-    name: datavi-api-network
+  datavi-backend-network:
+    name: datavi-backend-network
