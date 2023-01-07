@@ -14,13 +14,13 @@ func Init() {
 
 func loadENV() {
 
-	envConf(`ENV_TYPE`, `local`)
+	envConf(`ENV_TYPE`, `dev`)
 
 	// Database
-	envConf(`DB_HOST`, `127.0.0.1:5432`)
-	envConf(`DB_USERNAME`, `postgres`)
-	envConf(`DB_PASSWORD`, `postgres`)
-	envConf(`DB_DATABASE`, `myTest-datavi`)
+	envConf(`DB_HOST`, `dev-datavi.cxwpcvm3mzsu.ap-southeast-1.rds.amazonaws.com:5432`)
+	envConf(`DB_USERNAME`, `devdatavi`)
+	envConf(`DB_PASSWORD`, `6z11KkLWZBVdGUM1Bnyh`)
+	envConf(`DB_DATABASE`, `postgres`)
 	envConf(`CLIENT_ORIGIN`, `http://localhost:3000`)
 	envConf(`TOKEN_EXPIRED_IN`, `60m`)
 	envConf(`TOKEN_MAXAGE`, `60`)

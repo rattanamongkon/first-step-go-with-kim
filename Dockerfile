@@ -1,10 +1,10 @@
 FROM golang:alpine as builder
-
 # Set the current working directory
 WORKDIR /app
-
+COPY go.mod go.sum /app/
+RUN go mod download
 # Copy the source code
-COPY . .
+COPY . /app
 
 RUN go mod tidy
 
@@ -18,4 +18,4 @@ RUN go build -o docker-datavi-api .
 # EXPOSE 8109
 
 # Run the Go binary when the container starts
-# CMD ["./docker-datavi-api"]
+CMD ["./docker-datavi-api"]

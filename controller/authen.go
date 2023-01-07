@@ -70,7 +70,7 @@ func (s *mainService) LoginUser(ctx *gin.Context) {
 		log.Println(err.Error())
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"status": false,
-			"msg":    "Invalid email or Password",
+			"msg":    "Invalid Username or Password",
 			// "msg":    err.Error(),
 		})
 		return
